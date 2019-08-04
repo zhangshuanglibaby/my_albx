@@ -22,3 +22,8 @@ exports.getListPage = (req,res) => {
 
 /*---------------------处理后台页面---------------------- */
 //约定好后台页面请求都添加/admin
+
+//处理主页面
+exports.getAdminIndexPage = (req,res) => {
+  res.render('admin/index');
+}

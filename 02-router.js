@@ -8,18 +8,17 @@ const router = express.Router();
 
 /*----------处理前台页面---------- */
 //处理主页面
-router.get('/index',pagesController.getIndexPage);
-
+router.get('/index', pagesController.getIndexPage)
 //处理详情页面
-router.get('/detail',pagesController.getDetailPage);
-
+.get('/detail', pagesController.getDetailPage)
 //处理列表页面
-router.get('/list',pagesController.getListPage);
+router.get('/list', pagesController.getListPage)
 
 
 /*-------------处理后台页面------------------ */
 
-
+//处理主页面
+.get('/admin/index',pagesController.getAdminIndexPage)
 
 
 
