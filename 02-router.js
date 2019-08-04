@@ -12,14 +12,15 @@ router.get('/index', pagesController.getIndexPage)
 //处理详情页面
 .get('/detail', pagesController.getDetailPage)
 //处理列表页面
-router.get('/list', pagesController.getListPage)
+.get('/list', pagesController.getListPage)
 
 
 /*-------------处理后台页面------------------ */
 
 //处理主页面
 .get('/admin/index',pagesController.getAdminIndexPage)
-
+//处理目录页面
+.get('/admin/categories',pagesController.getAdminCategoriesPage)
 
 
 

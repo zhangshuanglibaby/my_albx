@@ -18,7 +18,7 @@ exports.getDetailPage = (req,res) => {
 //处理列表页面的请求
 exports.getListPage = (req,res) => {
   res.render('list');
-}
+};
 
 /*---------------------处理后台页面---------------------- */
 //约定好后台页面请求都添加/admin
@@ -26,4 +26,9 @@ exports.getListPage = (req,res) => {
 //处理主页面
 exports.getAdminIndexPage = (req,res) => {
   res.render('admin/index');
+};
+
+//处理目录页面
+exports.getAdminCategoriesPage = (req,res) => {
+  res.render('admin/categories');
 }
