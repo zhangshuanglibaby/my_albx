@@ -14,9 +14,7 @@ router.get('/index', pagesController.getIndexPage)
 //处理列表页面
 .get('/list', pagesController.getListPage)
 
-
 /*-------------处理后台页面------------------ */
-
 //处理主页面
 .get('/admin/index',pagesController.getAdminIndexPage)
 //处理目录页面
