@@ -31,4 +31,9 @@ exports.getAdminIndexPage = (req,res) => {
 //处理目录页面
 exports.getAdminCategoriesPage = (req,res) => {
   res.render('admin/categories');
+};
+
+//处理评论页面
+exports.getAdminCommentsPage = (req,res) => {
+  res.render('admin/comments');
 }

@@ -19,7 +19,8 @@ router.get('/index', pagesController.getIndexPage)
 .get('/admin/index',pagesController.getAdminIndexPage)
 //处理目录页面
 .get('/admin/categories',pagesController.getAdminCategoriesPage)
-
+//处理评论页面
+.get('/admin/comments',pagesController.getAdminCommentsPage)
 
 
 
