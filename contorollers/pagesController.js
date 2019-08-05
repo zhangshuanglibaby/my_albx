@@ -25,7 +25,7 @@ exports.getListPage = (req,res) => {
 
 //处理主页面
 exports.getAdminIndexPage = (req,res) => {
-  res.render('admin/index');
+    res.render('admin/index');
 };
 
 //处理目录页面

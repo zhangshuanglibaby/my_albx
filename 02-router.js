@@ -2,6 +2,7 @@
 
 //引入用户模块
 const pagesController = require('./contorollers/pagesController');
+const userController = require('./contorollers/userController');
 
 const express = require('express');
 const router = express.Router();
@@ -39,5 +40,8 @@ router.get('/index', pagesController.getIndexPage)
 .get('/admin/slides',pagesController.getAdminSlidesPage)
 //处理用户页面
 .get('/admin/users',pagesController.getAdminUsersPage)
+
+//处理验证登录接口 -- post
+.post('/loginCheck',userController.loginCheck)
 
 module.exports = router;
