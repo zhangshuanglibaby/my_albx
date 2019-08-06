@@ -3,6 +3,10 @@ $(() => {
   $.ajax({
     type : 'get',
     url : '/getAllPost',
+    data : {
+      pageNum : 1,
+      pageSize : 4
+    },
     success : function(res) {
       console.log(res);
       if(res.code === 200) {

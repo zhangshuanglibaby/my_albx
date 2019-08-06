@@ -3,8 +3,10 @@
 const postsModel = require('../models/postsModel');
 
 exports.getAllPost = (req,res) => {
+  //获取请求的数据
+  let obj = req.query;
   //调用模块数据
-  postsModel.getAllPost((err,result) => {
+  postsModel.getAllPost(obj,(err,result) => {
     //返回结果
     if(err) {
       res.json({code:400,msg:'查询不到数据'});
