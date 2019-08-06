@@ -7,6 +7,7 @@ $('.btnLogin').on('click',() => {
     type : 'post',
     url : '/loginCheck',
     data,
+    dataType : 'json',
     success : (res) => {
       console.log(res);
       if(res.code === 400) {
