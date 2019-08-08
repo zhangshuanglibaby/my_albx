@@ -28,7 +28,7 @@ exports.getAllPost = (obj,callback) => {
     sql += ` and posts.\`status\` = '${obj.status}'`;
   }
   //如无筛选状态,则是分页的默认数据
-  sql += `ORDER BY id DESC
+  sql += ` ORDER BY id DESC
           LIMIT ${(obj.pageNum-1)*obj.pageSize},${obj.pageSize}`;
   conn.query(sql,(err,result) => {
     if(err) {

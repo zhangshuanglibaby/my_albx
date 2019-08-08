@@ -7,7 +7,7 @@
 
 $(() => {
   let pageNum = 1;
-  let pageSize = 2;
+  let pageSize = 1;
   function init(search) {
     $.ajax({
       type: 'get',
@@ -52,7 +52,7 @@ $(() => {
     })
   };
 
-  
+
   //分类数据的动态加载
   $.ajax({
     type : 'get',
@@ -67,6 +67,20 @@ $(() => {
         $('.cateSelector').html(html);
       });
     }
+  });
+
+
+  //实现点击筛选展现数据的请求 --- 注册点击事件
+  $('.btn-select').on('click',e => {
+    e.preventDefault();
+    //获取分类值和状态值 --- 利用对象方式存储
+    let obj = {
+      cate : $('.cateSelector').val(),
+      status : $('.statusSelector').val()
+    }
+    //调用重新加载数据
+    init(obj);
   })
+
 
 })
