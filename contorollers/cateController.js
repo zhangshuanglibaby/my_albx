@@ -3,14 +3,15 @@
 //引入第三方模块
 const cateModel = require('../models/cateModel');
 
-exports.getAllCate = (req, res) => {
-  cateModel.getAllCate((err, result) => {
-    if (err) {
-      res.json({code:400,msg:'查询数据失败'});
+exports.getAllCate = (req,res) =>{
+  //调用数据模块
+  cateModel.getAllCate((err,result) => {
+    if(err) {
+      res.json({code : 400, msg : '查询不到数据'});
     }else {
       res.json({
-        code:200,
-        msg:'查询数据成功',
+        code : 200,
+        msg : '成功查询到数据',
         data : result
       })
     }

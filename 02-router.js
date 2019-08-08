@@ -50,6 +50,6 @@ router.get('/index', pagesController.getIndexPage)
 //处理文章数据的动态加载
 .get('/getAllPost',postsController.getAllPost)
 //处理分类数据的动态加载
-// .get('/getAllCate',cateController.getAllCate)
+.get('/getAllCate',cateController.getAllCate)
 
 module.exports = router;

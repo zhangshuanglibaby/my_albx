@@ -18,6 +18,7 @@ $(() => {
         pageSize: pageSize,
         ...search
       },
+      dataType : 'json',
       success: (res) => {
         console.log(res);
         if (res.code === 200) {
@@ -49,6 +50,23 @@ $(() => {
         init();
       }
     })
-  }
+  };
+
+  
+  //分类数据的动态加载
+  $.ajax({
+    type : 'get',
+    url : '/getAllCate',
+    dataType : 'json',
+    success : (res) => {
+      console.log(res);
+      let html = `<option value="all">所有状态</option>`;
+      //遍历数组,动态生成结构
+      res.data.forEach(e => {
+        html += `<option value="${e.id}">${e.name}</option>`;
+        $('.cateSelector').html(html);
+      });
+    }
+  })
 
 })
