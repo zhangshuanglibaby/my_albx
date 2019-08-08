@@ -4,7 +4,7 @@ let conn = mysql.createConnection({
   user : 'root',
   password : 'root',
   //把时间格式化
-  // dateStrings : String,
+  dateStrings : String,
   database : 'baixiu'
 });
 
