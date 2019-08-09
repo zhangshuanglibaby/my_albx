@@ -52,8 +52,10 @@ router.get('/index', pagesController.getIndexPage)
 .get('/getAllPost',postsController.getAllPost)
 //处理分类数据的动态加载
 .get('/getAllCate',cateController.getAllCate)
-// //处理文件上传接口 -- post
+//处理文件上传接口 -- post
 .post('/uploadFile',uploadController.uploadFile)
+//处理添加文章接口 - post
+.post('/addPost',postsController.addPost)
 
 
 module.exports = router;

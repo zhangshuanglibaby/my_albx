@@ -45,7 +45,7 @@ $(() => {
     url : '/getAllCate',
     dataType : 'json',
     success : (res) => {
-      console.log(res);
+      // console.log(res);
       if(res.code === 200) {
         let html = '';
         res.data.forEach(e => {
@@ -54,5 +54,34 @@ $(() => {
         });
       }
     }
+  });
+
+
+  //使用富文本框替换文本域
+  CKEDITOR.replace('content');
+
+  //添加文章请求
+  $('.btn-save').on('click',e => {
+    e.preventDefault();
+    //富文本框和文本域同步
+    CKEDITOR.instances.content.updateElement();
+    //收集数据
+    let data = $('.row').serialize();
+    //发送ajax
+    $.ajax({
+      type : 'post',
+      url : '/addPost',
+      data,
+      dataType :'json',
+      success : (res) => {
+        // console.log(res);
+        if(res.code === 200) {
+          location.href = '/admin/posts';
+        }else {
+          alert(res.msg);
+        }
+      }
+    })
   })
+  
 })

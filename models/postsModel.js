@@ -62,4 +62,23 @@ exports.getAllPost = (obj,callback) => {
 };
 
 
+//添加数据
+exports.addPost = (data,callback) => {
+  //参数是请求的数据--由于请求的数据不会带有用户的id,浏览数,点赞数
+  //需要在前面手动设置 --- 用户的id根据session来获取
+  // let sql = `insert into posts values(null,'${data.slug}','${data.title}',
+  // '${data.feature}','${data.created}','${data.content}','${data.views}',
+  // '${data.likes}','${data.status}', '${data.user_id}','${data.category_id}')`;
+  let sql = `insert into posts set ?`
+  conn.query(sql,data,(err,result) => {
+    if(err) {
+      console.log(err);
+      callback(err);
+    }else {
+      callback(null);
+    }
+  })
+}
+
+
 
