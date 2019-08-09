@@ -20,6 +20,7 @@ $(() => {
       data : fd,
       contentType : false,
       processData : false,
+      dataType : 'json',
       success : (res) => {
         // console.log(res);
         if(res.code === 200) {
@@ -35,5 +36,23 @@ $(() => {
         }
       }
     })
+  });
+
+
+  //分类动态数据加载
+  $.ajax({
+    type : 'get',
+    url : '/getAllCate',
+    dataType : 'json',
+    success : (res) => {
+      console.log(res);
+      if(res.code === 200) {
+        let html = '';
+        res.data.forEach(e => {
+          html +=` <option value="${e.id}">${e.name}</option>`;
+          $('#category').html(html);
+        });
+      }
+    }
   })
 })
