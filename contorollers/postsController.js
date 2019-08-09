@@ -21,3 +21,4 @@ exports.getAllPost = (req, res) => {
     }
   })
 }
+

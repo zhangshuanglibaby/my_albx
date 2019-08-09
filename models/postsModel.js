@@ -3,6 +3,7 @@
  * 要查询获取全部数据
  * 要查询筛选的数据
  * 要查count关键词获取总数据 -- 数字
+ * 增加数据 -- insert into 利用?占位符
  */
 //多条件查询可以添加守恒 -- 可以利用and连接
 
@@ -20,12 +21,14 @@ exports.getAllPost = (obj,callback) => {
               JOIN users on posts.user_id = users.id
               JOIN categories on posts.category_id = categories.id
               WHERE 1 = 1 `;
+  let cateSql = ` and category_id = ${obj.cate}`;
+  let statusSql = ` and posts.\`status\` = '${obj.status}'`;
   //检测有筛选状态,
   if(obj.cate && obj.cate !== 'all') {
-    sql += ` and category_id = ${obj.cate}`;
+    sql += cateSql;
   }
   if(obj.status && obj.status !== 'all') {
-    sql += ` and posts.\`status\` = '${obj.status}'`;
+    sql += statusSql;
   }
   //如无筛选状态,则是分页的默认数据
   sql += ` ORDER BY id DESC
@@ -41,10 +44,10 @@ exports.getAllPost = (obj,callback) => {
                 where 1 = 1 `;
       //也要判断筛选后的总页数
       if(obj.cate && obj.cate !== 'all') {
-        sql += ` and category_id = ${obj.cate}`;
+        sql += cateSql;
       }
       if(obj.status && obj.status !== 'all') {
-        sql += ` and posts.\`status\` = '${obj.status}'`;
+        sql += statusSql;
       }
       conn.query(sql,(err2,result2) =>{
         if(err2) {
@@ -56,4 +59,7 @@ exports.getAllPost = (obj,callback) => {
       })
     }
   })
-}
+};
+
+
+
