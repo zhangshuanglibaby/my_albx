@@ -7,7 +7,7 @@
 
 $(() => {
   let pageNum = 1;
-  let pageSize = 1;
+  let pageSize = 2;
   function init(search) {
     $.ajax({
       type: 'get',

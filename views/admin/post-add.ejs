@@ -13,9 +13,9 @@
         <h1>写文章</h1>
       </div>
       <!-- 有错误信息时展示 -->
-      <!-- <div class="alert alert-danger">
-        <strong>错误！</strong>发生XXX错误
-      </div> -->
+      <div class="alert alert-danger" hidden>
+        <strong>错误！</strong> <span>发生XXX错误</span> 
+      </div>
       <form class="row">
         <div class="col-md-9">
           <div class="form-group">
@@ -69,4 +69,5 @@
 
   <%- include('./layout/admin_footer.ejs')%>
 </body>
+<script src="/assets/js/post-add.js"></script>
 </html>

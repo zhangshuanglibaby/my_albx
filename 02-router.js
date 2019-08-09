@@ -5,6 +5,7 @@ const pagesController = require('./contorollers/pagesController');
 const userController = require('./contorollers/userController');
 const postsController = require('./contorollers/postsController');
 const cateController = require('./contorollers/cateController');
+const uploadController = require('./contorollers/uploadController');
 
 const express = require('express');
 const router = express.Router();
@@ -51,5 +52,8 @@ router.get('/index', pagesController.getIndexPage)
 .get('/getAllPost',postsController.getAllPost)
 //处理分类数据的动态加载
 .get('/getAllCate',cateController.getAllCate)
+//处理文件上传接口 -- post
+.post('/uploadFile',uploadController.uploadFile)
+
 
 module.exports = router;

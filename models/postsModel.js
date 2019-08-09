@@ -35,7 +35,17 @@ exports.getAllPost = (obj,callback) => {
       callback(err);
     }else {
       //再执行一次查询总记录 -- 获取数字
-      let sql = `SELECT COUNT(*) as ctn FROM posts`;
+      let sql = `SELECT COUNT(*) as ctn FROM posts
+                JOIN users on posts.user_id = users.id
+                JOIN categories on posts.category_id = categories.id
+                where 1 = 1 `;
+      //也要判断筛选后的总页数
+      if(obj.cate && obj.cate !== 'all') {
+        sql += ` and category_id = ${obj.cate}`;
+      }
+      if(obj.status && obj.status !== 'all') {
+        sql += ` and posts.\`status\` = '${obj.status}'`;
+      }
       conn.query(sql,(err2,result2) =>{
         if(err2) {
           callback(err2);
