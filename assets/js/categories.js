@@ -51,6 +51,26 @@ $(() => {
         }
       }
     })
+  });
+
+  //分类目录页的分类添加
+  $('#add').on('click',e => {
+    e.preventDefault();
+    let data = $('form').serialize();
+    // console.log(data);
+    $.ajax({
+      type : 'post',
+      url : '/addCate',
+      data,
+      success : (res) => {
+        if(res.code === 200) {
+          alert(res.msg);
+        }else {
+          $('.alert-danger').show(500).delay(3000).hide(500);
+          $('.alert-danger >span').text(res.msg);
+        }
+      }
+    })
   })
 
 

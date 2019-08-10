@@ -32,6 +32,21 @@ exports.editCateById = (req,res) => {
       res.json({code:200,msg:'分类编辑成功'});
     }
   })
+};
+
+//添加分类
+exports.addCate = (req,res) => {
+  //接收参数
+  let obj = req.body;
+  obj.id = null;
+  //调用数据模块
+  cateModel.addCate(obj,err => {
+    if(err) {
+      res.json({code:400,msg:'分类添加失败'});
+    }else {
+      res.json({code:200,msg:'分类添加成功'});
+    }
+  })
 }
 
 

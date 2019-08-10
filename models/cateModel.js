@@ -64,4 +64,17 @@ exports.editCateById = (obj,callback) => {
       callback(null);
     }
   })
+};
+
+//添加分类
+exports.addCate = (obj,callback) => {
+  let sql = 'INSERT INTO categories set ?';
+  conn.query(sql,obj,err => {
+    if(err) {
+      console.log(err);
+      callback(err);
+    }else {
+      callback(null);
+    }
+  })
 }
