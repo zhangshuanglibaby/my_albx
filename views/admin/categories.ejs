@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
   <meta charset="utf-8">
   <title>Categories &laquo; Admin</title>
-<%- include('./layout/admin_header.ejs')%>>
+  <%- include('./layout/admin_header.ejs')%>>
 </head>
+
 <body>
   <div class="main">
     <%- include('./layout/admin_navbar.ejs')%>
@@ -13,12 +15,13 @@
         <h1>分类目录</h1>
       </div>
       <!-- 有错误信息时展示 -->
-      <!-- <div class="alert alert-danger">
-        <strong>错误！</strong>发生XXX错误
-      </div> -->
+      <div class="alert alert-danger" style="display: none">
+        <strong>错误！</strong> <span>发生XXX错误</span> 
+      </div>
       <div class="row">
         <div class="col-md-4">
           <form>
+            <input type="hidden" name="id" value="" id="id">
             <h2>添加新分类目录</h2>
             <div class="form-group">
               <label for="name">名称</label>
@@ -30,7 +33,8 @@
               <p class="help-block">https://zce.me/category/<strong>slug</strong></p>
             </div>
             <div class="form-group">
-              <button class="btn btn-primary" type="submit">添加</button>
+              <button class="btn btn-primary" type="submit" id="add">添加</button>
+              <button class="btn btn-primary" type="submit" id="edit" style="display: none">编辑</button>
             </div>
           </form>
         </div>
@@ -49,7 +53,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
+              <%# <tr>
                 <td class="text-center"><input type="checkbox"></td>
                 <td>未分类</td>
                 <td>uncategorized</td>
@@ -66,16 +70,7 @@
                   <a href="javascript:;" class="btn btn-info btn-xs">编辑</a>
                   <a href="javascript:;" class="btn btn-danger btn-xs">删除</a>
                 </td>
-              </tr>
-              <tr>
-                <td class="text-center"><input type="checkbox"></td>
-                <td>未分类</td>
-                <td>uncategorized</td>
-                <td class="text-center">
-                  <a href="javascript:;" class="btn btn-info btn-xs">编辑</a>
-                  <a href="javascript:;" class="btn btn-danger btn-xs">删除</a>
-                </td>
-              </tr>
+              </tr> %>
             </tbody>
           </table>
         </div>
@@ -87,4 +82,24 @@
 
   <%- include('./layout/admin_footer.ejs')%>
 </body>
+<script src="/assets/js/categories.js"></script>
+<script src="/assets/vendors/template/template-web.js"></script>
+<script type="text/template" id="cateListTemp">
+{{each data val}}
+<tr>
+    <td class="text-center"><input type="checkbox"></td>
+    <td>{{val.name}}</td>
+    <td>{{val.slug}}</td>
+    <td class="text-center">
+      <a href="javascript:;" class="btn btn-info btn-xs btn-edit"
+      data-id="{{val.id}}" data-name="{{val.name}}" data-slug="{{val.slug}}"
+      >编辑</a>
+      <a href="javascript:;" class="btn btn-danger btn-xs">删除</a>
+    </td>
+  </tr>
+
+{{/each}}
+
+</script>
+
 </html>

@@ -56,6 +56,18 @@ router.get('/index', pagesController.getIndexPage)
 .post('/uploadFile',uploadController.uploadFile)
 //处理添加文章接口 - post
 .post('/addPost',postsController.addPost)
+//处理根据id获取文章的数据
+.get('/getPostById',postsController.getPostById)
+//处理分类目录里的根据id编辑文章
+.post('/editPostById',postsController.editPostById)
+// //处理删除文章接口
+// .post('/delPostById',)
+// //处理分类目录编辑分类
+// .post('/editCateById',cateController.editCateById)
+// //处理分类目录里的添加分类
+// .post('/addCate',cateController.addCate)
+// //处理分类目录里的删除分类
+// .get('/delCateById',postsController.delPostById)
 
 
 module.exports = router;

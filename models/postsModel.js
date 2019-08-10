@@ -62,7 +62,7 @@ exports.getAllPost = (obj,callback) => {
 };
 
 
-//添加数据
+//添加文章数据
 exports.addPost = (data,callback) => {
   //参数是请求的数据--由于请求的数据不会带有用户的id,浏览数,点赞数
   //需要在前面手动设置 --- 用户的id根据session来获取
@@ -78,7 +78,38 @@ exports.addPost = (data,callback) => {
       callback(null);
     }
   })
+};
+
+//根据id获取文章数据
+exports.getPostById = (id,callback) => {
+  let sql = 'SELECT * FROM posts WHERE id = ' + id;
+  conn.query(sql,(err,result) => {
+    if(err) {
+      console.log(err);
+      callback(err);
+    }else {
+      callback(null,result[0]);
+    }
+  })
+};
+
+//编辑文章数据
+exports.editPostById = (obj,callback) => {
+  let sql = 'UPDATE posts set ? where id = ?';
+  conn.query(sql,[obj,obj.id],err => {
+    if(err) {
+      console.log(err);
+      callback(err);
+    }else {
+      callback(null);
+    }
+  })
 }
+
+
+
+
+
 
 
 

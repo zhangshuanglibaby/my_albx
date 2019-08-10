@@ -3,6 +3,8 @@
 //引入第三方模块
 const cateModel = require('../models/cateModel');
 
+
+//获取所有的分类
 exports.getAllCate = (req,res) =>{
   //调用数据模块
   cateModel.getAllCate((err,result) => {
@@ -16,4 +18,7 @@ exports.getAllCate = (req,res) =>{
       })
     }
   })
-}
+};
+
+
+

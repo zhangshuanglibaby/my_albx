@@ -1,6 +1,7 @@
 //处理文章页面的请求和返回结果
 
 const postsModel = require('../models/postsModel');
+const moment = require('moment');
 
 
 //处理获取所有文章数据
@@ -22,7 +23,7 @@ exports.getAllPost = (req, res) => {
       })
     }
   })
-}
+};
 
 //处理添加文章请求
 exports.addPost = (req,res) => {
@@ -31,6 +32,7 @@ exports.addPost = (req,res) => {
   //设置浏览数,点赞数,用户的id -- 要根据数据库的名称
   data.views = 0;
   data.likes = 0;
+  data.id = null;
   data.user_id = req.session.currentUser.id;
   // console.log(data);
   //调用数据模块
@@ -42,5 +44,38 @@ exports.addPost = (req,res) => {
     }
   }) 
 
+};
+
+//处理编辑时根据id返回原始数据
+exports.getPostById = (req,res) => {
+  //接收参数
+  let id = req.query.id;
+  //调用数据模块
+  postsModel.getPostById(id,(err,result) => {
+    if(err) {
+      res.json({code:400,msg:'查询失败'});
+    }else {
+      //转化格式时间
+      result.created = moment(result.created).format('YYYY-MM-DDTHH:mm')
+      res.json({code:200,msg:'查询成功',data:result});
+    }
+  })
+
+};
+
+//处理编辑文章请求
+exports.editPostById = (req,res) => {
+  //接收参数
+  let obj = req.body;
+  //调用数据模块
+  postsModel.editPostById(obj,err => {
+    if(err) {
+      res.json({code:400,msg:'编辑文章失败'});
+    }else {
+      res.json({code:200,msg:'编辑文章成功'});
+    }
+  })
 }
+
+
 
