@@ -20,5 +20,19 @@ exports.getAllCate = (req,res) =>{
   })
 };
 
+//编辑分类
+exports.editCateById = (req,res) => {
+  //接收参数
+  let obj = req.body;
+  //调用数据模块
+  cateModel.editCateById(obj,err => {
+    if(err) {
+      res.json({code:400,msg:'分类编辑失败'});
+    }else {
+      res.json({code:200,msg:'分类编辑成功'});
+    }
+  })
+}
+
 
 

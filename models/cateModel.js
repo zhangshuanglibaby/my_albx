@@ -51,4 +51,17 @@ exports.delCateById = (id,callback) => {
       callback(null);
     }
   })
+};
+
+//修改分类
+exports.editCateById = (obj,callback) => {
+  let sql = 'UPDATE categories set ? where id = ?';
+  conn.query(sql,[obj,obj.id],err => {
+    if(err) {
+      console.log(err);
+      callback(err);
+    }else {
+      callback(null);
+    }
+  })
 }
