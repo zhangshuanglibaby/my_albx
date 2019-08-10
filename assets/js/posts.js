@@ -7,7 +7,7 @@
 
 $(() => {
   let pageNum = 1;
-  let pageSize = 2;
+  let pageSize = 3;
 
   function init(search) {
     $.ajax({
@@ -82,6 +82,30 @@ $(() => {
     //调用重新加载数据
     init(obj);
   });
+
+  //实现点击删除文章
+  $('tbody').on('click','.btn-del',function() {
+    let length = $(this).parents('tr').siblings().length;
+    console.log(length);
+    if(!confirm('确认删除吗?')) {
+      return;
+    }
+    let id = $(this).data('id');
+    $.ajax({
+      type : 'get',
+      url : '/delPostById?id=' + id,
+      dataType : 'json',
+      success : (res) => {
+        if(res.code === 200) {
+          console.log(res);
+          if(length === 0) {
+            pageNum = pageNum - 1;
+          }
+          init();
+        }
+      }
+    })
+  })
 
   
 

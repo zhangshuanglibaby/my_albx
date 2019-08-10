@@ -64,12 +64,8 @@ router.get('/index', pagesController.getIndexPage)
 .post('/editCateById',cateController.editCateById)
 // //处理分类目录里的添加分类
 .post('/addCate',cateController.addCate)
-// //处理删除文章接口
-// .post('/delPostById',)
-
-
-// //处理分类目录里的删除分类
-// .get('/delCateById',postsController.delPostById)
+//处理分类目录里的删除分类
+.get('/delPostById',postsController.delPostById)
 
 
 module.exports = router;

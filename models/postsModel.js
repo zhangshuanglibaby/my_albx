@@ -82,7 +82,7 @@ exports.addPost = (data,callback) => {
 
 //根据id获取文章数据
 exports.getPostById = (id,callback) => {
-  let sql = 'SELECT * FROM posts WHERE id = ' + id;
+  let sql = 'SELECT * FROM posts WHERE id =' + id;
   conn.query(sql,(err,result) => {
     if(err) {
       console.log(err);
@@ -104,6 +104,20 @@ exports.editPostById = (obj,callback) => {
       callback(null);
     }
   })
+};
+
+//删除文章数据
+exports.delPostById = (id,callback) => {
+  let sql = 'DELETE FROM posts WHERE id =' + id;
+  conn.query(sql,err => {
+    if(err) {
+      console.log(err);
+      callback(err);
+    }else {
+      callback(null);
+    }
+  })
+
 }
 
 
