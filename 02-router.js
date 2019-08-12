@@ -79,6 +79,8 @@ router.get('/index', pagesController.getIndexPage)
 .post('/addNewMenu',optionsController.addNewMenu)
 //处理获取导航菜单的数据
 .get('/getAllMenu',optionsController.getAllMenu)
+//处理删除导航菜单的数据 -- 通过索引
+.get('/delMenuByIndex',optionsController.delMenuByIndex)
 //处理设置操作的网站设置的原始数据返回
 .get('/getSite',optionsController.getSite)
 //处理设置操作的保存

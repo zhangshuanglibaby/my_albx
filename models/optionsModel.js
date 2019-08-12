@@ -37,7 +37,7 @@ exports.addNewMenu = (data,callback) => {
 };
 
 //获取导航菜单的所有数据
-exports.getAllMenu = (callback => {
+exports.getAllMenu = (callback )=> {
   let sql = 'SELECT value from `options` WHERE id = 9';
   conn.query(sql,(err,result) => {
     if(err) {
@@ -47,7 +47,32 @@ exports.getAllMenu = (callback => {
       callback(null,result[0].value);
     }
   })
-})
+};
+
+//删除导航菜单的数据
+exports.delMenuByIndex = (index,callback) => {
+  let sql = 'SELECT `value` FROM `options` WHERE id = 9';
+  conn.query(sql,(err,result) =>{
+    if(err) {
+      console.log(err);
+      callback(err);
+    }else {
+      let arr = JSON.parse(result[0].value)
+      arr.splice(index,1);
+      // console.log(arr);
+      let jsonStr = JSON.stringify(arr);
+      let sql = 'UPDATE `options` set `value` = ? where id = 9';
+      conn.query(sql,[jsonStr],err1 => {
+        if(err1) {
+          console.log(err1);
+          callback(err1);
+        }else {
+          callback(null);
+        }
+      })
+    }
+  })
+}
 
 
 //返回网站数据

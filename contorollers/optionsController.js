@@ -31,6 +31,22 @@ exports.getAllMenu = (req,res) => {
       res.json({code:200,msg:'数据查询成功',data});
     }
   })
+};
+
+
+//处理删除导航菜单数据
+exports.delMenuByIndex = (req,res) => {
+  //获取参数
+  let index = req.query.index;
+  // console.log(index);
+  //调用数据模块
+  optionsModel.delMenuByIndex(index,(err,result) => {
+    if(err) {
+      res.json({code:400,msg:'删除失败'});
+    }else {
+      res.json({code:200,msg:'删除成功'});
+    }
+  })
 }
 
 
