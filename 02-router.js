@@ -6,6 +6,7 @@ const userController = require('./contorollers/userController');
 const postsController = require('./contorollers/postsController');
 const cateController = require('./contorollers/cateController');
 const uploadController = require('./contorollers/uploadController');
+const optionsController = require('./contorollers/optionsController');
 
 const express = require('express');
 const router = express.Router();
@@ -74,7 +75,8 @@ router.get('/index', pagesController.getIndexPage)
 .get('/delCateById',cateController.delCateById)
 
 
-
+//处理导航菜单的添加
+.post('/addNewMenu',optionsController.addNewMenu)
 
 
 
