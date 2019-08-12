@@ -2,6 +2,8 @@
 
 const optionsModel = require('../models/optionsModel');
 
+
+//处理设置操作的添加导航菜单
 exports.addNewMenu = (req, res) => {
   //接收参数
   let data = req.body;
@@ -14,4 +16,44 @@ exports.addNewMenu = (req, res) => {
       res.json({code:200,msg:'添加成功'});
     }
   });
+};
+
+//处理设置操作的返回网站数据
+exports.getSite = (req,res) =>{
+  //调用数据模块
+  optionsModel.getSite((err,result) => {
+    if(err) {
+      res.json({code:400,msg:'查询数据失败'});
+    }else {
+      res.json({code:200,msg:'查询数据成功',data:result});
+    }
+  })
+};
+
+
+//处理设置操作的网站设置
+exports.setSite = (req,res) => {
+  //获取参数
+  let data = req.body;
+  
+  //由于复选框显示的结果是on,需要对它特别的设置
+  if(data.comment_status) {
+    data.comment_status = 1;
+  }else {
+    data.comment_status = 0;
+  }
+
+  if(data.comment_reviewed) {
+    data.comment_reviewed = 1;
+  }else {
+    data.comment_reviewed = 0;
+  }
+  //调用数据模块
+  optionsModel.setSite(data,err => {
+    if(err) {
+      res.json({code:400,msg:'网站设置失败'});
+    }else {
+      res.json({code:200,msg:'网站设置成功'});
+    }
+  })
 }

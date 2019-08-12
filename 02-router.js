@@ -75,8 +75,12 @@ router.get('/index', pagesController.getIndexPage)
 .get('/delCateById',cateController.delCateById)
 
 
-//处理导航菜单的添加
+//处理设置操作的导航菜单的添加
 .post('/addNewMenu',optionsController.addNewMenu)
+//处理设置操作的网站设置的原始数据返回
+.get('/getSite',optionsController.getSite)
+//处理设置操作的保存
+.post('/setSite',optionsController.setSite)
 
 
 
