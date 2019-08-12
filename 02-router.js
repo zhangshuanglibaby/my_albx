@@ -48,24 +48,35 @@ router.get('/index', pagesController.getIndexPage)
 
 //处理验证登录接口 -- post
 .post('/loginCheck',userController.loginCheck)
-//处理文章数据的动态加载
-.get('/getAllPost',postsController.getAllPost)
-//处理分类数据的动态加载
-.get('/getAllCate',cateController.getAllCate)
 //处理文件上传接口 -- post
 .post('/uploadFile',uploadController.uploadFile)
+
+
+//处理文章数据的动态加载
+.get('/getAllPost',postsController.getAllPost)
 //处理添加文章接口 - post
 .post('/addPost',postsController.addPost)
 //处理根据id获取文章的数据
 .get('/getPostById',postsController.getPostById)
 //处理分类目录里的根据id编辑文章
 .post('/editPostById',postsController.editPostById)
+//处理文章数据的删除
+.get('/delPostById',postsController.delPostById)
+
+
+//处理分类数据的动态加载
+.get('/getAllCate',cateController.getAllCate)
 //处理分类目录编辑分类
 .post('/editCateById',cateController.editCateById)
-// //处理分类目录里的添加分类
+//处理分类目录里的添加分类
 .post('/addCate',cateController.addCate)
-//处理分类目录里的删除分类
-.get('/delPostById',postsController.delPostById)
+//处理分类目录的删除分类
+.get('/delCateById',cateController.delCateById)
+
+
+
+
+
 
 
 module.exports = router;

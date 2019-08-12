@@ -77,4 +77,18 @@ exports.addCate = (obj,callback) => {
       callback(null);
     }
   })
+};
+
+//删除分类
+//由于可能是批量删除,id会有多个,利用-in关键字
+exports.delCateById = (id,callback) => {
+  let sql = `DELETE FROM categories WHERE id in (${id.id})`;
+  conn.query(sql,err => {
+    if(err) {
+      console.log(err);
+      callback(err);
+    }else {
+      callback(null);
+    }
+  })
 }

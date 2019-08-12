@@ -47,6 +47,20 @@ exports.addCate = (req,res) => {
       res.json({code:200,msg:'分类添加成功'});
     }
   })
+};
+
+//删除分类
+exports.delCateById = (req,res) => {
+  //接收参数
+  let id = req.query;
+  //调用数据模块
+  cateModel.delCateById(id,err => {
+    if(err) {
+      res.json({code:400,msg:"删除失败"});
+    }else {
+      res.json({code:200,msg:'删除成功'});
+    }
+  })
 }
 
 
