@@ -36,6 +36,19 @@ exports.addNewMenu = (data,callback) => {
   })
 };
 
+//获取导航菜单的所有数据
+exports.getAllMenu = (callback => {
+  let sql = 'SELECT value from `options` WHERE id = 9';
+  conn.query(sql,(err,result) => {
+    if(err) {
+      console.log(err);
+      callback(err);
+    }else {
+      callback(null,result[0].value);
+    }
+  })
+})
+
 
 //返回网站数据
 exports.getSite = (callback) =>{
@@ -72,4 +85,4 @@ exports.setSite = (data,callback) => {
       }
     })
   }
-}
+};

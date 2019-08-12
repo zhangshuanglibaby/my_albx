@@ -77,6 +77,8 @@ router.get('/index', pagesController.getIndexPage)
 
 //处理设置操作的导航菜单的添加
 .post('/addNewMenu',optionsController.addNewMenu)
+//处理获取导航菜单的数据
+.get('/getAllMenu',optionsController.getAllMenu)
 //处理设置操作的网站设置的原始数据返回
 .get('/getSite',optionsController.getSite)
 //处理设置操作的保存

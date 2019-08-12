@@ -55,7 +55,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
+              <!-- <tr>
                 <td class="text-center"><input type="checkbox"></td>
                 <td><i class="fa fa-glass"></i>奇趣事</td>
                 <td>奇趣事</td>
@@ -81,7 +81,7 @@
                 <td class="text-center">
                   <a href="javascript:;" class="btn btn-danger btn-xs">删除</a>
                 </td>
-              </tr>
+              </tr> -->
             </tbody>
           </table>
         </div>
@@ -93,6 +93,24 @@
 
 <%- include('./layout/admin_footer.ejs')%>
 </body>
+<script src="/assets/vendors/template/template-web.js"></script>
 <script src="/assets/js/navMenus.js"></script>
+<script type="text/template" id="navMenusTemp">
+{{each data val}}
+<tr>
+  <td class="text-center"><input type="checkbox"></td>
+  <td><i class="fa fa-glass"></i>{{val.text}}</td>
+  <td>{{val.title}}</td>
+  <td>{{val.link}}</td>
+  <td class="text-center">
+    <a href="javascript:;" class="btn btn-danger btn-xs">删除</a>
+  </td>
+</tr>
+{{/each}}
+
+
+
+
+</script>
 
 </html>

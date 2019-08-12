@@ -18,6 +18,24 @@ exports.addNewMenu = (req, res) => {
   });
 };
 
+
+//处理获取所有导航菜单数据
+exports.getAllMenu = (req,res) => {
+  //调用数据模块
+  optionsModel.getAllMenu((err,result) => {
+    if(err) {
+      console.log(err);
+      res.json({code:400,msg:'数据查询失败'});
+    }else {
+      let data = JSON.parse(result);
+      res.json({code:200,msg:'数据查询成功',data});
+    }
+  })
+}
+
+
+
+
 //处理设置操作的返回网站数据
 exports.getSite = (req,res) =>{
   //调用数据模块
@@ -56,4 +74,4 @@ exports.setSite = (req,res) => {
       res.json({code:200,msg:'网站设置成功'});
     }
   })
-}
+};
